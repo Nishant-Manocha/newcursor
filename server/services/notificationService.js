@@ -17,17 +17,17 @@ class NotificationService {
     this.io = socketIo;
     
     // Initialize email transporter
-    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      this.emailTransporter = nodemailer.createTransporter({
-        host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-        port: process.env.EMAIL_PORT || 587,
-        secure: false,
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS
-        }
-      });
+if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+  this.emailTransporter = nodemailer.createTransport({
+    host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+    port: process.env.EMAIL_PORT || 587,
+    secure: false, // true for 465, false for 587
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
     }
+  });
+}
 
     // Initialize Twilio
     if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN) {

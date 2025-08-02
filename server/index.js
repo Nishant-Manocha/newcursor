@@ -17,7 +17,7 @@ const userRoutes = require('./routes/users');
 const analyticsRoutes = require('./routes/analytics');
 
 // Import middleware
-const authMiddleware = require('./middleware/auth');
+const { authMiddleware, optionalAuth } = require('./middleware/auth');
 const errorHandler = require('./middleware/errorHandler');
 
 // Import services
